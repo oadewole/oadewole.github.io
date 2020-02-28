@@ -1,9 +1,114 @@
-/* html {
-    font-size: 10px;
+html {
+    font-size: 16px;
+}
 
-} */
+body {
+    background-color: #F5F4B5 ;
+}
+
 .header {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     background-color: #6324B3;
     color: #FFFD79;
     font-family: 'Oxanium';
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name {
+    align-self: center;
+    font-size: 3rem;
+    text-shadow: 1px 1px 5px black;
+}
+
+.logo {
+    height: 115px;
+    width: 115px;
+    justify-content: space-around;
+    align-self: center;
+}
+
+.wrapper {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.content {
+    display: flex;
+    max-width: 960px;
+    flex-wrap: wrap;
+}
+
+.profile {
+    flex-grow: 0.33;
+    /* justify-content: space-evenly; */
+    margin: 1.5em;
+    font-family: 'Open Sans';
+    align-items: center;
+}
+.profile-pic{
+    max-width: 300px;
+    max-height: 320px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #C8C6F3;
+    /* padding: 0.1em; */
+}
+
+.caption {
+    background-color: #C8C6F3;
+    align-items: center;
+    border-radius: 4px;
+    margin: 1em;
+    padding: 0.75em;
+    text-align: center;
+}
+
+
+.work-list{
+    flex-grow: 0.67; /* take u*/
+    font-family: 'Open Sans';
+    background-color: #C8C6F3;
+    padding: 1em;   
+    border-radius: 4px;
+
+}
+
+.roles {
+    font-family: 'Oxanium';
+    font-size: 1.75em;
+    margin: 0px;
+}
+
+.job {
+    font-weight: 700;
+    font-style: italic;
+}
+
+.descr {
+    margin-top: 3px;
+    margin-bottom: 0px;
+}
+
+@media screen and (max-width: 1000px) {
+    .content {
+        /* align-content: center; */
+        justify-content: center;
+    }
+
+    .profile {
+        display: flex;
+        flex: row nowrap;
+        justify-content: space-evenly;
+    }
+
+
 }
