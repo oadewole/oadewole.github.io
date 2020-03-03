@@ -20,22 +20,62 @@
             cronut glossier pork belly tacos poke next level fanny pack vegan
             jianbing lo-fi.
           </p>
-        </div> 
+        </div>
         <div class="footer"></div>
       </div>
     </div>
     <script>
-      // change header
-      let pageTitle = document.querySelector(".header");
-      pageTitle.textContent = "Layo's Lab 4";
-
-      // insert paragraph tags
-
-
       
-      function clickMe() { 
+      let pageTitle = document.querySelector(".header");
+      pageTitle.innerHTML = "Welcome to Layo's JavaScript Adventure!";
+
+      function clickMe() {
+        // change header to "Layo's Lab 4"
+        pageTitle.innerHTML = "Layo's Lab 4"; 
+
         const content = document.querySelector(".content");
-        content.innerHTML = "Hello world";
+        content.innerHTML = "Hello world!";
+
+        // prompt user for name, store text and length (just a little razzle dazzle)
+        let firstName = prompt("Please enter your first name.");
+        let lastName = prompt("Please enter your last name.");
+
+        // two separate variables for first and last name
+        let firstNameLen = firstName.length;
+        let lastNameLen = lastName.length;
+
+        // insert 2 paragraph elements
+        content.insertAdjacentHTML('beforeend','<p class="first"></p>');
+        content.insertAdjacentHTML('beforeend', '<p class="second"></p>');
+
+        // add character count of name in first paragraph
+        firstP = document.querySelector(".first");
+        firstP.innerHTML = "My name has " + (firstNameLen + lastNameLen) + " characters.";
+
+        // give the third letter of name, capitalized
+        secondP = document.querySelector(".second");
+
+        if (firstNameLen < 3) { // if firstName has at most 3 characters, return the last letter
+          secondP.innerHTML = "The third character in my name is " + firstName[firstNameLen - 1].toUpperCase(); 
+        } else {
+          secondP.innerHTML = "The third character in my name is " + firstName[2].toUpperCase() + ".";
+        }
+
+        // add a new line to second paragraph
+        secondP.innerHTML += "<br>";
+
+        // give the last three characters of last name in new line
+        if (lastNameLen <= 3) { // if last name has at most 3 letters
+          secondP.innerHTML += lastName;
+        } else {
+          secondP.innerHTML += "Last three characters: " + lastName.substring(lastNameLen - 3);
+        }
+
+        // display total name length next to name in header
+        let totalNameLen = firstNameLen + lastNameLen;
+        pageTitle.innerHTML += " " + totalNameLen;
+
+
       }
     </script>
   </body>
