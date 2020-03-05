@@ -2,14 +2,14 @@
 <html lang="en">
  
 <head>
-  <title>Test JSON page</title>
+  <title>Layo's List of Countries</title>
   <link rel="stylesheet" type="text/css" href="./styles.css">
 </head>
 
 <body>
   <div class="container">
     <div class="wrapper">
-      <div class="header">Test JSON page</div>
+      <div class="header">Layo's List of Countries</div>
 
       <button class="activate">Click me to replace list
         entries</button>
@@ -266,6 +266,13 @@
       { "name": "Zimbabwe", "code": "ZW" }
     ]
     console.log("List of countries in the world", countries);
+
+    // insert ordered list into content div
+    let content = document.querySelector(".content");
+    content.insertAdjacentHTML('afterbegin', '<ol class="countries"></ol>');
+
+    
+
   </script>
 </body>
 
