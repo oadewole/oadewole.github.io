@@ -3,6 +3,7 @@
   <head>
     <title>Layo's List of Countries</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
+
   </head>
 
   <body>
@@ -15,7 +16,8 @@
         <div class="footer"></div>
       </div>
     </div>
-    <script>
+    <script src="script.js" defer></script>
+    <!-- <script>
       /* N.B. - For your lab, use the variable "countries" now available on the window space */
       // 243 countries
       const countries = [
@@ -134,11 +136,11 @@
         { name: "Kazakhstan", code: "KZ" },
         { name: "Kenya", code: "KE" },
         { name: "Kiribati", code: "KI" },
-        { name: "Korea, Democratic People'S Republic of", code: "KP" },
+        { name: "Korea, Democratic People's Republic of", code: "KP" },
         { name: "Korea, Republic of", code: "KR" },
         { name: "Kuwait", code: "KW" },
         { name: "Kyrgyzstan", code: "KG" },
-        { name: "Lao People'S Democratic Republic", code: "LA" },
+        { name: "Lao People's Democratic Republic", code: "LA" },
         { name: "Latvia", code: "LV" },
         { name: "Lebanon", code: "LB" },
         { name: "Lesotho", code: "LS" },
@@ -279,8 +281,15 @@
       }
 
       button.onclick = function() {
-        // push element of country list to orderlist using random number as index 25 times
-        // content.innerHTML = "Hey There. This is a Test.";
+        // replace previous list with new empty list 
+        let newList = document.createElement('ol'); 
+        newList.className = "countries";
+
+        let oldList = document.querySelector(".countries"); // reference to old list
+        let parent = oldList.parentNode; 
+
+        parent.replaceChild(newList, oldList);
+
         let picked = [];
 
         for (let i = 0; i < 25; i++) {
@@ -295,14 +304,41 @@
           picked.push(countries[idx]);
         }
  
-        // Test output
-        // console.log("Picked Countries:\n", picked);
+        // sorting function
+        let alphabetize = function(a, b){
+          let nameA = a.name.toUpperCase();
+          let nameB = b.name.toUpperCase();
+
+          // if nameA comes before nameB
+          if (nameA < nameB) {
+            return -1;
+          } else if (nameA > nameB) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+
+        // alphabetize list by country name
+        tmp = picked.sort(alphabetize);
 
         // populate list with picked countries create list item (<li>)
         const list = document.querySelector(".countries");
 
-        picked.forEach(element => list.insertAdjacentHTML("beforeend", "<li>" + element + "</li>"));
+        tmp.forEach(function(element){
+          list.insertAdjacentHTML("beforeend", "<li>" + "<strong>" + element.code + "</strong>" + " " + element.name + "</li>");  
+        });
+
+        // Log unselected countries to console log
+        console.log("Countries Not Selected:")
+        countries.forEach(function(element){
+          if(picked.includes(element) === false) {
+            console.log(element.code, element.name);
+          }
+        })
+        console.log("End of Countries Not Selected.");
+
       };
-    </script>
+    </script> -->
   </body>
 </html>
