@@ -1,5 +1,5 @@
 /* 
-Note: I did not use the MDN source code at all for this assignment. However I did look at their descriptions of what the JS should accomplish in order to gain clarity on what was being asked in the assignment description. */
+Note: I did not use the MDN source code at all for this assignment. However, I did look at their descriptions of what the JS should accomplish in order to gain clarity on what was being asked in the assignment description on ELMS. */
 
 const displayedImage = document.querySelector(".displayed-img");
 const thumbBar = document.querySelector(".thumb-bar");
@@ -16,7 +16,7 @@ for (let i = 1; i <= 5; i++) {
   newImage.setAttribute("src", path);
   thumbBar.appendChild(newImage);
 
-  // adding onClick handler to change to selected image path (not sure why this is works/how to logic the explanation/what the other way to do this would be)
+  // adding onClick handler to change to selected image path (not sure why this is works/how to explain the logic/what the other way to do this would be)
   newImage.onclick = function() {
     displayedImage.setAttribute("src", path);
   }
