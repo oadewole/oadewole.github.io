@@ -38,3 +38,11 @@ btn.onclick = function() {
         overlay.style.backgroundColor = 'rgba(0,0,0,0)';
     }
 }
+
+/* Questions:
+
+1. What is meant by "function separation"? Could we have an example?
+2. If our page works properly, but the code doesn't necessarily seem to follow the ELMS guidelines, will it still be accepted, or will we get points deducted?
+3. 
+
+*/

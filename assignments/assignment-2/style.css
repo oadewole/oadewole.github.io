@@ -1,5 +1,14 @@
 h1 {
-  font-family: helvetica, arial, sans-serif;
+  font-family: 'Lobster Two'; 
+  font-weight: 700;
+  font-size: 55px;
+  text-align: center;
+  margin-bottom: 19.92px;
+}
+
+h2 {
+  font-family: 'Lobster Two';
+  font-weight: 400;
   text-align: center;
 }
  
