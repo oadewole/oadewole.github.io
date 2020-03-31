@@ -7,7 +7,7 @@
     <div class="wrapper">
       <div class="container">
         <div>
-          <h1>Layo's HTML 1 Forms Lab</h1>
+          <h1>HTML Forms Lab</h1>
         </div>
 
         <div class="form-container">
@@ -15,7 +15,7 @@
             <ul>
               <li>
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="user_name"> 
+                <input type="text" id="name" name="user_name" maxlength="140"> 
               </li>
 
               <li>
@@ -25,7 +25,11 @@
 
               <li>
                 <label for="msg">Message:</label>
-                <textarea id="msg" name="user_message" maxlength="140"></textarea>
+                <textarea id="msg" name="user_message" rows="5" cols="33">Feel free to enter your message here.</textarea>
+              </li>
+
+              <li class="button">
+                <button type="submit">Submit Message</button>
               </li>
             </ul>
           </form>
