@@ -13,6 +13,11 @@ h3 {
   line-height: 1.2
 }
 
+div#my-map {
+  width: 640px;
+  height: 480px;
+}
+
 /* End document default styles */
 .code {
   background-color: rgb(255, 231, 202);
