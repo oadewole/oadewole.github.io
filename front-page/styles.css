@@ -1,3 +1,7 @@
+/* html {
+    background-color: #1A1516;
+    color: #BFA1A8;
+} */
 body {
    font-family: 'Baloo Chettan 2', cursive;
    font-size: 20px;
@@ -13,8 +17,30 @@ h1 {
     text-decoration: underline;
 }
 
+li {
+    font-size: 18px;
+}
+
+a {
+
+}
+
 .wrapper {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
 }
+
+.lab-link, .assns, .project {
+    /* border-color: #AB2346; */
+    border-color: teal;
+    border-radius: 10px;
+    border-style: dotted;
+    margin: 1em;
+    padding: 0.75em;
+}
+
+/* .lab-link {
+    display: flex;
+    ;
+} */
