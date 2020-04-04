@@ -20,6 +20,15 @@ div#my-map {
   
 }
 
+/* I did a Google search on how to style leaflet popups and came across this link (http://bl.ocks.org/uafrazier/d589caa322f1b1e7c651). 
+   I still don't know why this works or why this overrides Leaflet's CSS...
+   */
+.lib-popup .leaflet-popup-tip,
+.lib-popup .leaflet-popup-content-wrapper {
+    background: rgba(255, 255, 255, 0.623);
+    border-radius: 20px;
+}
+
 /* End document default styles */
 .code {
   background-color: rgb(255, 231, 202);
