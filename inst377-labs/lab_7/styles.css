@@ -15,9 +15,9 @@ h3 {
 
 div#my-map {
   /* map container dimensions */
-  width: 640px;
   height: 480px;
-  
+  max-width: 100%;
+  max-height: inherit;
 }
 
 /* I did a Google search on how to style leaflet popups and came across this link (http://bl.ocks.org/uafrazier/d589caa322f1b1e7c651). 
@@ -96,6 +96,9 @@ div#my-map {
   padding: 10px;
   overflow-wrap: break-word;
   margin: 25px 50px;
+  width: 80%;
+  height: auto;
+  justify-content: center;
 }
 
 .activate {
