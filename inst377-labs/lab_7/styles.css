@@ -76,6 +76,12 @@ div#my-map {
   font-size: 1.5em;
   text-transform: capitalize;
   flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.subheader {
+  font-size: 0.75em;
+  font-weight: lighter;
 }
 
 .instructions {
