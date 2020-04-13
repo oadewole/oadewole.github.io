@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Charts Lab</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="header">Front-End Libraries: Charts Lab</div>
+        <div class="content" style="height: 400px;">
+          <div id="chartDiv" ></div>
+          When your lab is done, this should be replaced with a useful chart
+          full of food data.
+        </div>
+        <div class="footer">Let's eat out in the future!</div>
+      </div>
+    </div>
+    <script>
+      fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json") // replace this with the food safety data set
+        .then((response) => {
+          console.log("response information", response);
+          return response;
+        })
+        .then((data) => data.json()) // implicit return
+        .then((data) => {
+          // explicit return (return stmt needed to push info forward)
+          console.log("length of data:", data.length); // print number of entries in response
+          return data;
+        })
+        .then((data) => {
+          // remove N/A data
+          const nonEmptyData = data.filter(
+            (element) => element.category !== "N/A"
+          );
+
+          // obtain restaurants and their category
+          const newData = nonEmptyData.map((element) => ({
+            name: element.name,
+            category: element.category,
+          }));
+          // console.log("newData", newData);
+          return newData;
+        })
+        .then((newData) => {
+          // I tried to work out arranging the data by category on my own, but I eventually followed the Lab Walkthrough in the Media Gallery...
+          const result = newData.reduce((acc, curr) => {
+            if (curr.category !== "N/A" && !acc[curr.category]) {
+              acc[curr.category] = [];
+            }
+            acc[curr.category].push(curr);
+            return acc;
+          }, {});
+
+          console.log("arranged data", result);
+          return result;
+        })
+        .then((arrangedData) => {
+          const newArrData = Object.entries(arrangedData).map((m, i) => {
+            return {
+              y: m[1].length,
+              label: m[0]
+            }
+          })
+          return newArrData;
+        })
+
+        .then((newArrData) => {
+          window.onload = function() {
+            let pieChart = new CanvasJS.Chart("chartDiv", {
+              theme: "light2",
+            animationEnabled: true,
+            title: {
+              text: "Types of Food Establishments in PG County",
+            },
+
+            data: [
+              {
+                type: "doughnut",
+                startAngle: 250,
+                yValueFormatString: '##0',
+                indexLabel: "{label} {y}",
+                dataPoints: newArrData
+              },
+            ],
+          });
+
+          pieChart.render();
+          }
+        });
+    </script>
+  </body>
+</html>
