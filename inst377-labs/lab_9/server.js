@@ -31,7 +31,26 @@ function processDataForFrontEnd(req, res) {
       .then((r) => r.json())
       .then((data) => {
         console.log(data);
-        res.send({ data: data }); // here's where we return data to the front end
+
+        // remove N/A data
+        const nonEmptyData = data.filter(
+          (element) => element.category !== "N/A"
+        );
+        
+        const newData = nonEmptyData.map((element) => ({
+          name: element.name,
+          category: element.category,
+        }));
+
+        const result = newData.reduce((acc, curr) => {
+          if (curr.category !== "N/A" && !acc[curr.category]) {
+            acc[curr.category] = [];
+          }
+          acc[curr.category].push(curr);
+          return acc;
+        }, {});
+
+        res.send({ data: result }); // here's where we return data to the front end
       })
       .catch((err) => {
         console.log(err);
