@@ -24,17 +24,19 @@
           return response;
         })
         .then((data) => data.json()) // implicit return
-        .then((data) => { // print number of entries in response
+        .then((data) => {
+          // print number of entries in response
           // explicit return (return stmt needed to push info forward)
-          console.log("length of data:", data.length); 
+          console.log("length of data:", data.length);
           return data;
         })
-        .then((data) => { // obtain restaurants and their category
+        .then((data) => {
+          // obtain restaurants and their category
           // remove N/A data
           const nonEmptyData = data.filter(
             (element) => element.category !== "N/A"
           );
-          
+
           const newData = nonEmptyData.map((element) => ({
             name: element.name,
             category: element.category,
@@ -42,7 +44,8 @@
 
           return newData;
         })
-        .then((newData) => { // arrange data by category
+        .then((newData) => {
+          // arrange data by category
           // I tried to work out arranging the data by category on my own, but I eventually followed the Lab Walkthrough in the Media Gallery...
           const result = newData.reduce((acc, curr) => {
             if (curr.category !== "N/A" && !acc[curr.category]) {
@@ -54,7 +57,8 @@
 
           return result;
         })
-        .then((arrangedData) => { // format data for chart
+        .then((arrangedData) => {
+          // format data for chart
           const newArrData = Object.entries(arrangedData).map((m, i) => {
             return {
               y: m[1].length,
@@ -64,28 +68,27 @@
 
           return newArrData;
         })
-        .then((newArrData) => { // format chart
-          window.onload = function () {
-            let pieChart = new CanvasJS.Chart("chartDiv", {
-              theme: "light2",
-              animationEnabled: true,
-              title: {
-                text: "Types of Food Establishments in PG County",
+        .then((newArrData) => {
+          // format chart
+          let pieChart = new CanvasJS.Chart("chartDiv", {
+            theme: "light2",
+            animationEnabled: true,
+            title: {
+              text: "Types of Food Establishments in PG County",
+            },
+
+            data: [
+              {
+                type: "doughnut",
+                startAngle: 250,
+                yValueFormatString: "##0",
+                indexLabel: "{label} {y}",
+                dataPoints: newArrData,
               },
+            ],
+          });
 
-              data: [
-                {
-                  type: "doughnut",
-                  startAngle: 250,
-                  yValueFormatString: "##0",
-                  indexLabel: "{label} {y}",
-                  dataPoints: newArrData,
-                },
-              ],
-            });
-
-            pieChart.render();
-          };
+          pieChart.render();
         });
     </script>
   </body>
