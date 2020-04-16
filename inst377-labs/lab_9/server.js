@@ -30,10 +30,8 @@ function processDataForFrontEnd(req, res) {
     fetch(baseURL)
       .then((r) => r.json())
       .then((data) => {
-        console.log(data);
-
-        // remove N/A data
-        const nonEmptyData = data.filter(
+         // remove N/A data
+         const nonEmptyData = data.filter(
           (element) => element.category !== "N/A"
         );
         
@@ -50,7 +48,20 @@ function processDataForFrontEnd(req, res) {
           return acc;
         }, {});
 
-        res.send({ data: result }); // here's where we return data to the front end
+        const newArrData = Object.entries(result).map((m, i) => {
+          return {
+            y: m[1].length,
+            label: m[0],
+          };
+        });
+
+        return newArrData;
+      })
+      .then((data) => {
+       
+        console.log(data);
+
+        res.send({ data: data }); // here's where we return data to the front end
       })
       .catch((err) => {
         console.log(err);

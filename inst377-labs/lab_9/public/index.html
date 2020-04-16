@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Replace Me With Your Lab Page</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  </head>
 
-<head>
-  <title>Replace Me With Your Lab Page</title>
-  <link rel="stylesheet" type="text/css" href="./styles.css">
-</head>
-
-<body>
-  <div class="container">
-    <div class="wrapper">
-      <div class="header">Replace Me With Your Lab Page</div>
-      <div class="content"></div>
-      <div class="footer"></div>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="header">Lab 9: A Simple Server</div>
+        <div class="content" style="height: 400px;">
+          <div id="chartDiv"></div>
+        </div>
+        <div class="footer"></div>
+      </div>
     </div>
-  </div>
-  <script>
-    fetch('/api') // Rather than fetching from PG County, we're going to fetch from our own server.
-      .then(res => res.json())
-      .then(res => {
-        // Here's where your chart code should go.
-      })
-  </script>
-</body>
+    <script>
+      fetch("/api") // Rather than fetching from PG County, we're going to fetch from our own server.
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res.data);
+          // Here's where your chart code should go.
+          let pieChart = new CanvasJS.Chart("chartDiv", {
+            theme: "light2",
+            animationEnabled: true,
+            title: {
+              text: "Types of Food Establishments in PG County",
+            },
 
-</html> 
+            data: [
+              {
+                type: "doughnut",
+                startAngle: 250,
+                yValueFormatString: "##0",
+                indexLabel: "{label} {y}",
+                dataPoints: res.data,
+              },
+            ],
+          });
+
+          pieChart.render();
+        });
+    </script>
+  </body>
+</html>
